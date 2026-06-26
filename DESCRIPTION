@@ -1,16 +1,16 @@
 Package: SLpop
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Sri Lanka Population and Housing Data
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jane", "Doe",
-      email = "jane@example.com",
+      "Amali", "Rajapaksha",
+      email = "amali2022ugc@gmail.com",
       role = c("aut", "cre")
     )
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
+Description: Provides datasets from the Sri Lanka Census of Population and Housing 2024 (CPH 2024).
+    The package includes population, housing, household, and demographic datasets at the national, district, Divisional Secretariat (DS), and Grama Niladhari (GN) levels, facilitating statistical analysis, data visualization, and research in R.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
