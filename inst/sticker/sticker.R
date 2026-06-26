@@ -4,7 +4,7 @@ font_add_google("Roboto", "roboto")
 showtext_auto()
 
 sticker(
-  subplot = "inst/sticker/SriLanka (2).png",
+  subplot = "inst/sticker/SriLanka.png",
   package = "SLpopData",
   p_size = 20,
   p_color = "#004225",

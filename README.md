@@ -5,7 +5,7 @@
 
 <!-- Add your hex sticker here later -->
 
-<img src="man/figures/SLpop_hexSticker.png" align="right" width="180"/>
+<img src="man/figures/SLpopData_hexSticker.png" align="right" width="180"/>
 
 <!-- badges: start -->
 
@@ -13,10 +13,11 @@
 
 ## Overview
 
-**SLpop** is an R data package that provides datasets from the Sri Lanka
-Census of Population and Housing 2024 (CPH 2024). The package
-facilitates easy access to census data for statistical analysis,
-visualization, and research in R.
+**SLpop** is an R data package that provides population, housing,
+household, and demographic datasets at the national, district,
+Divisional Secretariat (DS), and Grama Niladhari (GN) levels,
+facilitating statistical analysis, data visualization, and research in
+R.
 
 ## Installation
 
@@ -24,14 +25,14 @@ Install the development version from GitHub using **pak**:
 
 ``` r
 install.packages("pak")
-pak::pkg_install("amalirajapaksha/SLpop")
+pak::pkg_install("amalirajapaksha/SLpopData")
 ```
 
 Alternatively, using **remotes**:
 
 ``` r
 install.packages("remotes")
-remotes::install_github("amalirajapaksha/SLpop")
+remotes::install_github("amalirajapaksha/SLpopData")
 ```
 
 ## Example
@@ -39,7 +40,7 @@ remotes::install_github("amalirajapaksha/SLpop")
 Load the package.
 
 ``` r
-library(SLpop)
+library(SLpopData)
 ```
 
 View all available datasets.
