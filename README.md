@@ -3,56 +3,107 @@
 
 # SLpop
 
+<!-- Add your hex sticker here later -->
+
+<img src="man/figures/SLpop_hexSticker.png" align="right" width="180"/>
+
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of SLpop is to …
+## Overview
+
+**SLpop** is an R data package that provides datasets from the Sri Lanka
+Census of Population and Housing 2024 (CPH 2024). The package
+facilitates easy access to census data for statistical analysis,
+visualization, and research in R.
 
 ## Installation
 
-You can install the development version of SLpop from
-[GitHub](https://github.com/) with:
+Install the development version from GitHub using **pak**:
 
 ``` r
-# install.packages("pak")
-pak::pak("amalirajapaksha/SLpop")
+install.packages("pak")
+pak::pkg_install("amalirajapaksha/SLpop")
+```
+
+Alternatively, using **remotes**:
+
+``` r
+install.packages("remotes")
+remotes::install_github("amalirajapaksha/SLpop")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-This package provides Sri Lanka Census of Population and Housing 2024
-datasets.
+Load the package.
 
 ``` r
 library(SLpop)
-
-# View available datasets
-data(package = "SLpop")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+View all available datasets.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+list_datasets()
+#>             Item 
+#> "gn_pop_age_sex"
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+Load a dataset.
 
-You can also embed plots, for example:
+``` r
+data("gn_pop_age_sex")
 
-<img src="man/figures/README-pressure-1.png" alt="" width="100%" />
+head(gn_pop_age_sex)
+```
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+Display the structure of the dataset.
+
+``` r
+str(gn_pop_age_sex)
+#> Classes 'tbl_df', 'tbl' and 'data.frame':    14008 obs. of  16 variables:
+#>  $ Province
+#> Code     : num  1 1 1 1 1 1 1 1 1 1 ...
+#>  $ Province
+#> Name     : chr  "Western" "Western" "Western" "Western" ...
+#>  $ District
+#> Code     : num  11 11 11 11 11 11 11 11 11 11 ...
+#>  $ District
+#> Name     : chr  "Colombo" "Colombo" "Colombo" "Colombo" ...
+#>  $ DS_Division
+#> Code  : num  3 3 3 3 3 3 3 3 3 3 ...
+#>  $ DS_Division
+#> Name  : chr  "Colombo" "Colombo" "Colombo" "Colombo" ...
+#>  $ GN_Division
+#> Code  : num  5 10 15 20 25 30 35 40 45 50 ...
+#>  $ GN_Division
+#> Name  : chr  "Sammanthranapura" "Mattakkuliya" "Modara" "Madampitiya" ...
+#>  $ GN_Division
+#> Number: chr  NA NA NA NA ...
+#>  $ 0 - 14               : num  1695 5653 6930 1831 1504 ...
+#>  $ 15 - 59              : num  4891 18163 20400 5024 4582 ...
+#>  $ 60 - 64              : num  393 1499 1554 353 354 ...
+#>  $ 65 and above         : num  661 2820 2844 491 668 ...
+#>  $ Male                 : num  3864 13749 15579 3890 3611 ...
+#>  $ Female               : num  3776 14386 16149 3809 3497 ...
+#>  $ Total                : num  7640 28135 31728 7699 7108 ...
+```
+
+Obtain summary statistics.
+
+``` r
+summary(gn_pop_age_sex)
+```
+
+View the dataset documentation.
+
+``` r
+?gn_pop_age_sex
+```
+
+## Data Source
+
+The datasets are compiled from the **Sri Lanka Census of Population and
+Housing 2024**, published by the Department of Census and Statistics,
+Sri Lanka.

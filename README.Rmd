@@ -15,45 +15,73 @@ knitr::opts_chunk$set(
 
 # SLpop
 
+<!-- Add your hex sticker here later -->
+<img src="man/figures/SLpop_hexSticker.png" align="right" width="180"/> 
+
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of SLpop is to ...
+## Overview
+
+**SLpop** is an R data package that provides datasets from the Sri Lanka Census of Population and Housing 2024 (CPH 2024). The package facilitates easy access to census data for statistical analysis, visualization, and research in R.
+
 
 ## Installation
 
-You can install the development version of SLpop from [GitHub](https://github.com/) with:
+Install the development version from GitHub using **pak**:
 
-``` r
-# install.packages("pak")
-pak::pak("amalirajapaksha/SLpop")
+```r
+install.packages("pak")
+pak::pkg_install("amalirajapaksha/SLpop")
+```
+
+Alternatively, using **remotes**:
+
+```r
+install.packages("remotes")
+remotes::install_github("amalirajapaksha/SLpop")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Load the package.
 
-This package provides Sri Lanka Census of Population and Housing 2024 datasets.
-
-```{r, eval=FALSE}
+```{r}
 library(SLpop)
-
-# View available datasets
-data(package = "SLpop")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+View all available datasets.
 
-```{r cars}
-summary(cars)
+```{r}
+list_datasets()
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+Load a dataset.
 
-You can also embed plots, for example:
+```{r echo=TRUE, results='hide'}
+data("gn_pop_age_sex")
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+head(gn_pop_age_sex)
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+Display the structure of the dataset.
+
+```{r}
+str(gn_pop_age_sex)
+```
+
+Obtain summary statistics.
+
+```{r, echo=TRUE, results='hide'}
+summary(gn_pop_age_sex)
+```
+
+View the dataset documentation.
+
+```{r eval=FALSE}
+?gn_pop_age_sex
+```
+
+## Data Source
+
+The datasets are compiled from the **Sri Lanka Census of Population and Housing 2024**, published by the Department of Census and Statistics, Sri Lanka.
