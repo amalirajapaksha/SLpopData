@@ -13,10 +13,11 @@
 
 ## Overview
 
-**SLpopData** is an R data package that provides datasets from the Sri
-Lanka Census of Population and Housing 2024 (CPH 2024). The package
-facilitates easy access to census data for statistical analysis,
-visualization, and research in R.
+**SLpopData** is an R data package that includes population, housing,
+household, and demographic datasets at the national, district,
+Divisional Secretariat (DS), and Grama Niladhari (GN) levels,
+facilitating statistical analysis, data visualization, and research in
+R.
 
 ## Installation
 
