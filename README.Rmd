@@ -31,7 +31,7 @@ Install the development version from GitHub using **pak**:
 
 ```r
 install.packages("pak")
-pak::pkg_install("amalirajapaksha/SLpopData")
+pak::pak("amalirajapaksha/SLpopData")
 ```
 
 Alternatively, using **remotes**:

@@ -25,7 +25,7 @@ Install the development version from GitHub using **pak**:
 
 ``` r
 install.packages("pak")
-pak::pkg_install("amalirajapaksha/SLpopData")
+pak::pak("amalirajapaksha/SLpopData")
 ```
 
 Alternatively, using **remotes**:
@@ -47,8 +47,10 @@ View all available datasets.
 
 ``` r
 list_datasets()
-#>             Item 
-#> "gn_pop_age_sex"
+#>                                                               Item 
+#>                                             "GNpop_by_EthnicGroup" 
+#>                                                              Title 
+#> "Population by Ethnic Group According to Grama Niladhari Division"
 ```
 
 Load a dataset.
