@@ -18,4 +18,7 @@ GNpop_by_EthnicGroup
 Distribution of population by ethnic group across Grama Niladhari Divisions (GND) in Sri Lanka
 based on the 2024 Census of Population and Housing.
 }
+\examples{
+head(GNpop_by_EthnicGroup)
+}
 \keyword{datasets}
