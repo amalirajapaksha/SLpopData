@@ -3,6 +3,7 @@
 library(readxl)
 library(tidyverse)
 
+#import data
 GNpop_by_EthnicGroup <-
   read_excel(
     "data-raw/raw_population_excel/GN_Level_Population_by_Ethnic_Group_cleaned.xlsx"
@@ -11,7 +12,7 @@ GNpop_by_EthnicGroup <-
 head(GNpop_by_EthnicGroup)
 
 
-
+#convert variables into appropriate structure
 GNpop_by_EthnicGroup <- GNpop_by_EthnicGroup |>
   mutate(across(everything(), as.character)) |>
   mutate(
