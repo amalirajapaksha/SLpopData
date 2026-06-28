@@ -58,27 +58,27 @@ list_datasets()
 Load a dataset.
 
 ```{r echo=TRUE, results='hide'}
-data("gn_pop_age_sex")
+data("GNpop_by_EthnicGroup")
 
-head(gn_pop_age_sex)
+head(GNpop_by_EthnicGroup)
 ```
 
 Display the structure of the dataset.
 
 ```{r}
-str(gn_pop_age_sex)
+str(GNpop_by_EthnicGroup)
 ```
 
 Obtain summary statistics.
 
 ```{r, echo=TRUE, results='hide'}
-summary(gn_pop_age_sex)
+summary(GNpop_by_EthnicGroup)
 ```
 
 View the dataset documentation.
 
 ```{r eval=FALSE}
-?gn_pop_age_sex
+?GNpop_by_EthnicGroup
 ```
 
 ## Data Source
