@@ -2,5 +2,5 @@
 #'
 #' @export
 list_datasets <- function() {
-  utils::data(package = "SLpopData")$results[, "Item"]
+  utils::data(package = "SLpopData")$results[, c("Item", "Title")]
 }
