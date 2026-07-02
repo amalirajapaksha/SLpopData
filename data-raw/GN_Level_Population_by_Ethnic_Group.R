@@ -6,7 +6,7 @@ library(tidyverse)
 #import data
 GNpop_by_EthnicGroup <-
   read_excel(
-    "data-raw/raw_population_excel/GN_Level_Population_by_Ethnic_Group_cleaned.xlsx"
+    "data-raw/raw_data_excel/GN_Level_Population_by_Ethnic_Group_cleaned.xlsx"
   )
 
 head(GNpop_by_EthnicGroup)
@@ -16,7 +16,7 @@ head(GNpop_by_EthnicGroup)
 GNpop_by_EthnicGroup <- GNpop_by_EthnicGroup |>
   mutate(across(everything(), as.character)) |>
   mutate(
-    Total = as.integer(Total),
+    Total = as.double(Total),
     District_Code = as.character(District_Code),
     District_Name = as.character(District_Name),
     DSD_Code = as.character(DSD_Code),
@@ -26,10 +26,11 @@ GNpop_by_EthnicGroup <- GNpop_by_EthnicGroup |>
   ) |>
 
   mutate(
-    across(-c(District_Code, District_Name, DSD_Code, DSD_Name, GND_Code, GND_Name), as.integer)
+    across(-c(District_Code, District_Name, DSD_Code, DSD_Name, GND_Code, GND_Name), as.double)
   )
 
 
 head(GNpop_by_EthnicGroup)
 
 usethis::use_data(GNpop_by_EthnicGroup, overwrite = TRUE)
+
