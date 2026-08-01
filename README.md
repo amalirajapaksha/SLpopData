@@ -14,10 +14,9 @@
 ## Overview
 
 **SLpopData** is an R data package that includes Sri Lanka’s population,
-housing, household, and demographic datasets at the national, district,
-Divisional Secretariat (DS), and Grama Niladhari (GN) levels,
-facilitating statistical analysis, data visualization, and research in
-R.
+housing, household, and demographic datasets at the District, Divisional
+Secretariat (DS), and Grama Niladhari (GN) levels, facilitating
+statistical analysis, data visualization, and research in R.
 
 ## Installation
 
@@ -47,10 +46,12 @@ View all available datasets.
 
 ``` r
 list_datasets()
-#>                                                               Item 
-#>                                             "GNpop_by_EthnicGroup" 
-#>                                                              Title 
-#> "Population by Ethnic Group According to Grama Niladhari Division"
+#>      Item                  
+#> [1,] "GNpop_by_EthnicGroup"
+#> [2,] "GNpop_by_Religion"   
+#>      Title                                                             
+#> [1,] "Population by Ethnic Group According to Grama Niladhari Division"
+#> [2,] "Population by Religion According to Grama Niladhari Division"
 ```
 
 Load a dataset.
