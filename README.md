@@ -98,6 +98,99 @@ View the dataset documentation.
 ?GNpop_by_EthnicGroup
 ```
 
+``` r
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+library(sf)
+#> Linking to GEOS 3.14.1, GDAL 3.12.1, PROJ 9.7.1; sf_use_s2() is TRUE
+library(ceylon)
+#> 
+#> Attaching package: 'ceylon'
+#> The following object is masked from 'package:datasets':
+#> 
+#>     rivers
+library(tidyr)
+library(ggplot2)
+library(scatterpie)
+#> Warning: package 'scatterpie' was built under R version 4.6.1
+#> scatterpie v0.2.6 Learn more at https://yulab-smu.top/
+
+district_ethnic <- GNpop_by_EthnicGroup |>
+  group_by(District_Name) |>
+  summarise(
+    Sinhalese = sum(Sinhalese, na.rm = TRUE),
+    Sri_Lanka_Tamil = sum(Sri_Lanka_Tamil, na.rm = TRUE),
+    Indian_Tamil = sum(Indian_Tamil_or_Malaiyaga_Thamilar, na.rm = TRUE),
+    Muslim = sum(Sri_Lanka_Moor_or_Muslim, na.rm = TRUE),
+    Burgher = sum(Burgher, na.rm = TRUE),
+    Malay = sum(Malay, na.rm = TRUE),
+    Chetty = sum(Sri_Lanka_Chetty, na.rm = TRUE),
+    Bharatha = sum(Bharatha, na.rm = TRUE),
+    Veddahs = sum(Veddahs, na.rm = TRUE),
+    Other = sum(Other, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(
+    DISTRICT = toupper(District_Name),
+    DISTRICT = recode(DISTRICT,
+                      "MONERAGALA" = "MONARAGALA")
+  )
+
+
+
+districts <- ceylon::district |>
+  filter(DISTRICT != "[UNKNOWN]") |>
+  left_join(district_ethnic, by = "DISTRICT")
+
+
+
+centroids <- st_centroid(districts)
+#> Warning: st_centroid assumes attributes are constant over geometries
+xy <- st_coordinates(centroids)
+centroids$x <- xy[,1]
+centroids$y <- xy[,2]
+
+
+centroids_df <- centroids |>
+  st_drop_geometry()
+
+
+ggplot() +
+  geom_sf(
+    data = districts,
+    fill = "grey98",
+    colour = "grey40",
+    linewidth = 0.3
+  ) +
+  geom_scatterpie(
+    data = centroids_df,
+    aes(x = x, y = y, r = 15000),   # adjust radius as needed
+    cols = c(
+      "Sinhalese",
+      "Sri_Lanka_Tamil",
+      "Indian_Tamil",
+      "Muslim",
+      "Burgher",
+      "Malay",
+      "Chetty",
+      "Bharatha",
+      "Veddahs",
+      "Other"
+    )
+  ) +
+  coord_sf() +
+  theme_void()
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" alt="" width="100%" />
+
 ## Data Source
 
 The datasets are compiled from the **Sri Lanka Census of Population and
