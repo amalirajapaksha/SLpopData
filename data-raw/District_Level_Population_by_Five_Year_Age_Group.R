@@ -26,7 +26,7 @@ DISpop_by_FiveYearAgeGroup <- DISpop_by_FiveYearAgeGroup |>
   ) |>
 
   mutate(
-    across(-c(District_Code, District_Name), as.double)
+    across(-c(District_Code, District_Name, Year), as.double)
   )
 
 
