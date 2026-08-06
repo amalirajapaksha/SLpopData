@@ -22,11 +22,10 @@ DISpop_by_FiveYearAgeGroup <- DISpop_by_FiveYearAgeGroup |>
     Total = as.double(Total),
     District_Code = as.character(District_Code),
     District_Name = as.character(District_Name),
-    Year = as.factor(Year)
   ) |>
 
   mutate(
-    across(-c(District_Code, District_Name, Year), as.double)
+    across(-c(District_Code, District_Name), as.double)
   )
 
 
