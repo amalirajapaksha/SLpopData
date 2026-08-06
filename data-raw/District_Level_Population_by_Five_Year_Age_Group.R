@@ -9,6 +9,9 @@ DISpop_by_FiveYearAgeGroup <-
     "data-raw/raw_data_excel/District_Level_Population_by_Five_Year_Age_Group_cleaned.xlsx"
   )
 
+DISpop_by_FiveYearAgeGroup <- DISpop_by_FiveYearAgeGroup |>
+  rename(Year = year)
+
 head(DISpop_by_FiveYearAgeGroup)
 
 
@@ -18,7 +21,8 @@ DISpop_by_FiveYearAgeGroup <- DISpop_by_FiveYearAgeGroup |>
   mutate(
     Total = as.double(Total),
     District_Code = as.character(District_Code),
-    District_Name = as.character(District_Name)
+    District_Name = as.character(District_Name),
+    Year = as.factor(Year)
   ) |>
 
   mutate(
