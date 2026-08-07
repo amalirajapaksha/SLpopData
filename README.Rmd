@@ -57,7 +57,7 @@ list_datasets()
 
 Load a dataset.
 
-```{r echo=TRUE, results='hide'}
+```{r echo=TRUE}
 data("GNpop_by_EthnicGroup")
 
 head(GNpop_by_EthnicGroup)
@@ -81,8 +81,9 @@ View the dataset documentation.
 ?GNpop_by_EthnicGroup
 ```
 
+Visualization
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(dplyr)
 library(sf)
 library(ceylon)
@@ -112,11 +113,9 @@ district_ethnic <- GNpop_by_EthnicGroup |>
   )
 
 
-
 districts <- ceylon::district |>
   filter(DISTRICT != "[UNKNOWN]") |>
   left_join(district_ethnic, by = "DISTRICT")
-
 
 
 centroids <- st_centroid(districts)
@@ -152,7 +151,14 @@ ggplot() +
       "Other"
     )
   ) +
+  scale_fill_brewer(
+    palette = "Set1",
+    name = "Ethnic Group"
+  ) +
   coord_sf() +
+  labs(
+  title = "District-wise Ethnic Composition of Sri Lanka (2024)"
+) +
   theme_void()
 ```
 

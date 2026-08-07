@@ -46,12 +46,14 @@ View all available datasets.
 
 ``` r
 list_datasets()
-#>      Item                  
-#> [1,] "GNpop_by_EthnicGroup"
-#> [2,] "GNpop_by_Religion"   
+#>      Item                        
+#> [1,] "DISpop_by_FiveYearAgeGroup"
+#> [2,] "GNpop_by_EthnicGroup"      
+#> [3,] "GNpop_by_Religion"         
 #>      Title                                                             
-#> [1,] "Population by Ethnic Group According to Grama Niladhari Division"
-#> [2,] "Population by Religion According to Grama Niladhari Division"
+#> [1,] "Population by Five-Year Age Groups According to District"        
+#> [2,] "Population by Ethnic Group According to Grama Niladhari Division"
+#> [3,] "Population by Religion According to Grama Niladhari Division"
 ```
 
 Load a dataset.
@@ -60,6 +62,34 @@ Load a dataset.
 data("GNpop_by_EthnicGroup")
 
 head(GNpop_by_EthnicGroup)
+#>   District_Code District_Name DSD_Code DSD_Name GND_Code         GND_Name Total
+#> 1            11       Colombo        3  Colombo        5 Sammanthranapura  7640
+#> 2            11       Colombo        3  Colombo       10     Mattakkuliya 28135
+#> 3            11       Colombo        3  Colombo       15           Modara 31728
+#> 4            11       Colombo        3  Colombo       20      Madampitiya  7699
+#> 5            11       Colombo        3  Colombo       25        Mahawatta  7108
+#> 6            11       Colombo        3  Colombo       30     Aluthmawatha 13714
+#>   Sinhalese Sri_Lanka_Tamil Indian_Tamil_or_Malaiyaga_Thamilar
+#> 1      3234            2485                                 32
+#> 2      7454           11566                                596
+#> 3      8253           14043                                396
+#> 4      2156            2171                                438
+#> 5      3079            1728                                 29
+#> 6      3525            7103                                762
+#>   Sri_Lanka_Moor_or_Muslim Burgher Malay Sri_Lanka_Chetty Bharatha Veddahs
+#> 1                     1865      16    NA               NA       NA      NA
+#> 2                     8214     189    50               13       NA      NA
+#> 3                     8712     147   132               NA       25      NA
+#> 4                     2893      NA    34               NA       NA      NA
+#> 5                     2237      17    NA               NA       NA      NA
+#> 6                     2142     107    56               NA       NA      NA
+#>   Other
+#> 1     8
+#> 2    53
+#> 3    20
+#> 4     7
+#> 5    18
+#> 6    19
 ```
 
 Display the structure of the dataset.
@@ -98,29 +128,15 @@ View the dataset documentation.
 ?GNpop_by_EthnicGroup
 ```
 
+Visualization
+
 ``` r
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(sf)
-#> Linking to GEOS 3.14.1, GDAL 3.12.1, PROJ 9.7.1; sf_use_s2() is TRUE
 library(ceylon)
-#> 
-#> Attaching package: 'ceylon'
-#> The following object is masked from 'package:datasets':
-#> 
-#>     rivers
 library(tidyr)
 library(ggplot2)
 library(scatterpie)
-#> Warning: package 'scatterpie' was built under R version 4.6.1
-#> scatterpie v0.2.6 Learn more at https://yulab-smu.top/
 
 district_ethnic <- GNpop_by_EthnicGroup |>
   group_by(District_Name) |>
@@ -144,15 +160,12 @@ district_ethnic <- GNpop_by_EthnicGroup |>
   )
 
 
-
 districts <- ceylon::district |>
   filter(DISTRICT != "[UNKNOWN]") |>
   left_join(district_ethnic, by = "DISTRICT")
 
 
-
 centroids <- st_centroid(districts)
-#> Warning: st_centroid assumes attributes are constant over geometries
 xy <- st_coordinates(centroids)
 centroids$x <- xy[,1]
 centroids$y <- xy[,2]
@@ -185,7 +198,14 @@ ggplot() +
       "Other"
     )
   ) +
+  scale_fill_brewer(
+    palette = "Set1",
+    name = "Ethnic Group"
+  ) +
   coord_sf() +
+  labs(
+  title = "District-wise Ethnic Composition of Sri Lanka (2024)"
+) +
   theme_void()
 ```
 
