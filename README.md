@@ -47,13 +47,15 @@ View all available datasets.
 ``` r
 list_datasets()
 #>      Item                        
-#> [1,] "DISpop_by_FiveYearAgeGroup"
-#> [2,] "GNpop_by_EthnicGroup"      
-#> [3,] "GNpop_by_Religion"         
-#>      Title                                                             
-#> [1,] "Population by Five-Year Age Groups According to District"        
-#> [2,] "Population by Ethnic Group According to Grama Niladhari Division"
-#> [3,] "Population by Religion According to Grama Niladhari Division"
+#> [1,] "DIShouse_by_Floor"         
+#> [2,] "DISpop_by_FiveYearAgeGroup"
+#> [3,] "GNpop_by_EthnicGroup"      
+#> [4,] "GNpop_by_Religion"         
+#>      Title                                                                                       
+#> [1,] "Number of Housing Units by Main Material Used for Floor Construction According to District"
+#> [2,] "Population by Five-Year Age Groups According to District"                                  
+#> [3,] "Population by Ethnic Group According to Grama Niladhari Division"                          
+#> [4,] "Population by Religion According to Grama Niladhari Division"
 ```
 
 Load a dataset.
@@ -128,7 +130,7 @@ View the dataset documentation.
 ?GNpop_by_EthnicGroup
 ```
 
-Visualization
+Visualizations
 
 ``` r
 library(dplyr)

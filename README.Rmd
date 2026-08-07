@@ -81,7 +81,7 @@ View the dataset documentation.
 ?GNpop_by_EthnicGroup
 ```
 
-Visualization
+Visualizations
 
 ```{r message=FALSE, warning=FALSE}
 library(dplyr)
